@@ -186,6 +186,20 @@ html.lenis body {
     align-items: center;
 }
 
+.badge-icon img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
+.badge-divider {
+    width: 1px;
+    height: 18px;
+    background: rgba(255, 255, 255, 0.25);
+    margin: 0 2px;
+    flex-shrink: 0;
+}
+
 .badge-text {
     display: flex;
     flex-direction: column;
@@ -655,9 +669,15 @@ html.lenis body {
         padding: 12px 24px;
     }
 
-    .badge-icon svg {
-        width: 28px;
-        height: 28px;
+    .badge-icon svg,
+    .badge-icon img {
+        width: 32px;
+        height: 32px;
+    }
+
+    .badge-divider {
+        height: 24px;
+        margin: 0 6px;
     }
 
     .badge-title {
@@ -748,10 +768,7 @@ html.lenis body {
     }
 }
 
-.main-logo-svg {
-    height: 48px;
-    width: auto;
-}
+
 
 .coe-svg {
     height: 16px;
@@ -876,15 +893,15 @@ html.lenis body {
     gap: 12px;
 }
 
-.main-logo-svg {
-    width: 160px;
-    height: auto;
-    display: block;
+.main-logo-img {
+    height: 48px;
+    width: auto;
+    object-fit: contain;
     transition: transform 0.3s ease;
 }
 
-.logo-link:hover .main-logo-svg {
-    transform: scale(1.02);
+.logo-link:hover .main-logo-img {
+    transform: scale(1.05);
 }
 
 .logo-text-brand {
@@ -1556,6 +1573,10 @@ html.lenis body {
 
     .main-logo-svg {
         width: 130px;
+    }
+
+    .main-logo-img {
+        height: 32px;
     }
 
     .menu-text {
