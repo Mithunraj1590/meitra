@@ -1146,6 +1146,8 @@ html.lenis body {
 .footer-logo {
     margin-bottom: 24px;
     display: block;
+    height: 40px;
+    width: auto;
 }
 
 .brand-description {
@@ -1448,5 +1450,161 @@ html.lenis body {
 
     .swiper-button-prev {
         left: 10px !important;
+    }
+}
+
+/* ============================================
+   GLOBAL RESPONSIVENESS
+   ============================================ */
+
+/* Tablet & Smaller Desktop (1024px and down) */
+@media (max-width: 1024px) {
+    .section-container {
+        padding: 0 40px;
+    }
+    
+    .nav-container {
+        width: 90vw;
+    }
+
+    .main-heading {
+        font-size: 42px;
+    }
+}
+
+/* Mobile Landscape & Large Tablets (768px and down) */
+@media (max-width: 768px) {
+    .bottom-info {
+        padding: 24px 20px 30px;
+    }
+
+    .main-heading {
+        font-size: 36px;
+    }
+
+    .huge-number {
+        transform: scale(0.8);
+        transform-origin: left center;
+    }
+
+    .stats-text {
+        font-size: 14px;
+    }
+
+    .know-more-btn {
+        width: 100%;
+        text-align: center;
+        padding: 12px 20px;
+    }
+
+    .section-title {
+        font-size: 32px;
+    }
+
+    .footer-top {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+    }
+}
+
+/* Small Mobile (480px and down) */
+@media (max-width: 480px) {
+    .top-nav {
+        padding: 15px 10px;
+    }
+
+    .nav-container {
+        padding: 10px 15px;
+        width: 95vw;
+    }
+
+    .logo {
+        height: 32px;
+    }
+
+    .menu-text {
+        display: none; /* Hide 'MENU' text on very small screens */
+    }
+
+    .main-heading {
+        font-size: 28px;
+        margin-bottom: 12px;
+    }
+
+    .huge-number {
+        transform: scale(0.65);
+    }
+
+    .stats-row {
+        gap: 10px;
+    }
+
+    .badge {
+        padding: 6px 12px;
+    }
+
+    .badge-title {
+        font-size: 12px;
+    }
+
+    .avatar-circle, .avatar-more {
+        width: 36px;
+        height: 36px;
+    }
+
+    .avatar-more {
+        font-size: 10px;
+    }
+
+    .section-title {
+        font-size: 28px;
+    }
+
+    .section-desc {
+        font-size: 14px;
+    }
+
+    .footer-top {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-brand {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    /* Bottom Sheet Scaling */
+    .sheet-content {
+        height: 85vh;
+    }
+
+    .article-body h3 {
+        font-size: 24px;
+    }
+}
+
+/* Extra Small (iPhone SE / Fold) */
+@media (max-width: 350px) {
+    .main-heading {
+        font-size: 24px;
+    }
+
+    .huge-number {
+        transform: scale(0.55);
+    }
+
+    .know-more-btn {
+        font-size: 14px;
     }
 }

@@ -100,52 +100,15 @@ document.addEventListener('DOMContentLoaded', () => {
         ScrollTrigger.create({
             trigger: slide,
             start: "top center",
-            end: "bottom center",
+            once: true, // Run animation only once per page session
             onEnter: () => {
                 const counter = slide.querySelector('.huge-number');
                 if (counter) animateFlipClock(counter);
-            },
-            onEnterBack: () => {
-                const counter = slide.querySelector('.huge-number');
-                if (counter) animateFlipClock(counter);
-            },
-            onLeave: () => {
-                const counter = slide.querySelector('.huge-number');
-                if (counter) resetSingleCounter(counter);
-            },
-            onLeaveBack: () => {
-                const counter = slide.querySelector('.huge-number');
-                if (counter) resetSingleCounter(counter);
             }
         });
     });
 
-    // Helper to reset only one counter
-    function resetSingleCounter(el) {
-        el.querySelectorAll('.flip-card').forEach(card => {
-            const target = el.getAttribute('data-target');
-            const index = Array.from(card.parentNode.children).indexOf(card);
-            const digit = target[index];
-            
-            card.querySelector('.top .flip-text').textContent = digit;
-            card.querySelector('.bottom .flip-text').textContent = '0';
-            card.querySelector('.leaf-front .flip-text').textContent = '0';
-            card.querySelector('.leaf-back .flip-text').textContent = digit;
 
-
-            const leaf = card.querySelector('.leaf');
-            const shadows = card.querySelectorAll('.shadow');
-
-            if (card._tl) {
-                card._tl.kill();
-                card._tl = null;
-            }
-
-            gsap.set(leaf, { rotationX: 0 });
-            gsap.set(shadows, { opacity: 0 });
-
-        });
-    }
 
     // Snapping logic refined for Lenis
     ScrollTrigger.create({
