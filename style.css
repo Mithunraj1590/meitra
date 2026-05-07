@@ -876,6 +876,17 @@ html.lenis body {
     gap: 12px;
 }
 
+.main-logo-svg {
+    width: 160px;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.logo-link:hover .main-logo-svg {
+    transform: scale(1.02);
+}
+
 .logo-text-brand {
     font-size: 24px;
     /* Increased from 20px */
@@ -892,8 +903,7 @@ html.lenis body {
 
 
 .menu-btn {
-    position: absolute;
-    right: 12px;
+    position: relative;
     background: rgba(255, 255, 255, 0.05);
     border-radius: 50%;
     width: 44px;
@@ -1541,7 +1551,11 @@ html.lenis body {
     }
 
     .logo {
-        height: 42px;
+        height: auto;
+    }
+
+    .main-logo-svg {
+        width: 130px;
     }
 
     .menu-text {
@@ -1549,7 +1563,8 @@ html.lenis body {
     }
 
     .menu-btn {
-        right: 15px;
+        position: relative;
+        right: auto;
         background: transparent;
         border: none;
         width: 32px;
