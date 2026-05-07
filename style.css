@@ -119,6 +119,7 @@ html.lenis body {
 .avatar-group {
     display: flex;
     align-items: center;
+    margin-bottom: 15px;
 }
 
 .avatar-circle {
@@ -904,6 +905,10 @@ html.lenis body {
     justify-content: center;
     z-index: 1002;
     transition: background 0.3s ease;
+}
+
+.menu-text {
+    display: none;
 }
 
 .menu-btn:hover {
