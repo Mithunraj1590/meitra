@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book an Appointment | Meitra Hospital</title>
+    <link rel="icon" type="image/png" href="assets/logo.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Anek+Malayalam:wght@100..800&family=Oswald:wght@500;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background-color: #fbfaf8;
+            color: #333;
+        }
+
+        .booking-hero {
+            padding: 160px 40px 80px;
+            background: #4a3a35;
+            color: #fff;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .booking-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 30px 30px;
+            opacity: 0.5;
+        }
+
+        .booking-hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .booking-hero h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(36px, 6vw, 64px);
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .booking-hero p {
+            font-size: clamp(16px, 1.5vw, 20px);
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+        }
+
+        .booking-page-container {
+            max-width: 1200px;
+            margin: -60px auto 100px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .booking-card {
+            background: #fff;
+            border-radius: 24px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
+            padding: 60px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .booking-stepper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 40px;
+            font-family: 'Anek Malayalam', sans-serif;
+            font-size: clamp(14px, 1.2vw, 16px);
+            color: #888;
+            font-weight: 500;
+        }
+
+        .step-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .step-number {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: #f0ede4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            color: #666;
+            transition: all 0.3s ease;
+        }
+
+        .step-item.active {
+            color: #222;
+            font-weight: 700;
+        }
+
+        .step-item.active .step-number {
+            background: #63453d;
+            color: #fff;
+            box-shadow: 0 4px 10px rgba(99, 69, 61, 0.3);
+        }
+
+        .step-divider {
+            width: 40px;
+            height: 2px;
+            background: #f0ede4;
+        }
+
+        .booking-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .form-group label {
+            font-size: 14px;
+            font-weight: 700;
+            color: #4a3a35;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .input-wrapper {
+            position: relative;
+            background: #fbfaf8;
+            border: 2px solid #f0ede4;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            height: 64px;
+            transition: all 0.3s ease;
+        }
+
+        .input-wrapper:focus-within {
+            border-color: #63453d;
+            background: #fff;
+            box-shadow: 0 8px 20px rgba(99, 69, 61, 0.05);
+        }
+
+        .input-icon {
+            margin-right: 15px;
+            color: #63453d;
+            opacity: 0.6;
+            display: flex;
+            align-items: center;
+        }
+
+        .booking-input,
+        .booking-select {
+            width: 100%;
+            background: transparent;
+            border: none;
+            outline: none;
+            font-size: 16px;
+            color: #333;
+            font-weight: 500;
+            font-family: 'Anek Malayalam', sans-serif;
+        }
+
+        .booking-select {
+            appearance: none;
+            cursor: pointer;
+        }
+
+        .select-arrow {
+            position: absolute;
+            right: 20px;
+            pointer-events: none;
+            color: #63453d;
+        }
+
+        .booking-submit-btn {
+            width: 100%;
+            background: #63453d;
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            height: 70px;
+            font-size: 20px;
+            font-weight: 700;
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            margin-top: 20px;
+            box-shadow: 0 15px 30px rgba(99, 69, 61, 0.2);
+        }
+
+        .booking-submit-btn:hover {
+            background: #4a3a35;
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(99, 69, 61, 0.3);
+        }
+
+        .booking-info-box {
+            margin-top: 40px;
+            padding: 24px;
+            background: #fbfaf8;
+            border-radius: 16px;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            border: 1px dashed #dcd6cb;
+        }
+
+        .info-icon {
+            width: 48px;
+            height: 48px;
+            background: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #63453d;
+            flex-shrink: 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .info-text p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            .booking-card {
+                padding: 40px 20px;
+            }
+
+            .booking-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .booking-stepper {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+
+            .step-divider {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Global Top Navigation -->
+    <nav class="top-nav">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="index.html" class="logo-link">
+                    <img src="assets/logo.png" alt="Meitra Logo" class="main-logo-img">
+                </a>
+            </div>
+
+            <button class="menu-btn" id="menu-toggle">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Fullscreen Mobile Menu -->
+    <div class="fullscreen-menu" id="fullscreen-menu">
+        <div class="menu-overlay"></div>
+        <div class="menu-content">
+            <ul class="menu-list">
+                <li><a href="index.html" style="--i:1">Home</a></li>
+                <li><a href="#" style="--i:2">About Meitra</a></li>
+                <li><a href="#" style="--i:3">Centres of Excellence</a></li>
+                <li><a href="#" style="--i:4">Find a Doctor</a></li>
+                <li><a href="#" style="--i:5">International Patients</a></li>
+                <li><a href="#" style="--i:6">Careers</a></li>
+                <li><a href="#" style="--i:7">Contact Us</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <section class="booking-hero">
+        <div class="booking-hero-content">
+            <h1>Book Your Consultation</h1>
+            <p>Take the first step towards world-class healthcare. Our experts are ready to provide you with the specialized care you need.</p>
+        </div>
+    </section>
+
+    <div class="booking-page-container">
+        <div class="booking-card">
+            <div class="booking-stepper">
+                <div class="step-item active">
+                    <span class="step-number">1</span>
+                    <span>Selection</span>
+                </div>
+                <div class="step-divider"></div>
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <span>Details</span>
+                </div>
+                <div class="step-divider"></div>
+                <div class="step-item">
+                    <span class="step-number">3</span>
+                    <span>Confirmation</span>
+                </div>
+            </div>
+
+            <form action="#">
+                <div class="booking-grid">
+                    <div class="form-group">
+                        <label>Location</label>
+                        <div class="input-wrapper">
+                            <div class="input-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                            </div>
+                            <select class="booking-select">
+                                <option>Meitra Hospital, Kozhikode</option>
+                                <option>Meitra Care Clinic, Wayanad</option>
+                            </select>
+                            <div class="select-arrow">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Speciality</label>
+                        <div class="input-wrapper">
+                            <div class="input-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                            </div>
+                            <select class="booking-select">
+                                <option>Select Speciality</option>
+                                <option>Neuro Sciences</option>
+                                <option>Cardiac Sciences</option>
+                                <option>Orthopaedics</option>
+                                <option>Oncology</option>
+                                <option>Gastroenterology</option>
+                            </select>
+                            <div class="select-arrow">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Select Doctor</label>
+                        <div class="input-wrapper">
+                            <div class="input-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                            </div>
+                            <input type="text" class="booking-input" placeholder="Search by Doctor Name">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Preferred Date</label>
+                        <div class="input-wrapper">
+                            <div class="input-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                            </div>
+                            <input type="date" class="booking-input">
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="booking-submit-btn">Continue to Details</button>
+            </form>
+
+            <div class="booking-info-box">
+                <div class="info-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                </div>
+                <div class="info-text">
+                    <p>Once you continue, you'll be asked to provide patient details and verify your mobile number for a secure booking experience.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Site Footer -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 Meitra Hospital. All Rights Reserved.</p>
+                <div class="footer-accreditation">
+                    <span class="ac-badge">JCI Accredited</span>
+                    <span class="ac-badge">NABH Accredited</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- GSAP & Lenis -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+    <script>
+        const lenis = new Lenis();
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+
+        // Menu Toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const fullscreenMenu = document.getElementById('fullscreen-menu');
+        if (menuToggle) {
+            menuToggle.addEventListener('click', () => {
+                const isActive = menuToggle.classList.toggle('active');
+                fullscreenMenu.classList.toggle('active');
+                
+                if (isActive) {
+                    lenis.stop();
+                } else {
+                    lenis.start();
+                }
+            });
+        }
+    </script>
+</body>
+</html>

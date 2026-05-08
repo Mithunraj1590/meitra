@@ -1,3 +1,17 @@
+@font-face {
+    font-family: 'AnekMalayalamCondensed';
+    src: url('assets/font/AnekMalayalam_Condensed-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'AnekMalayalamCondensedMedium';
+    src: url('assets/font/AnekMalayalam_Condensed-Medium.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 :root {
     --brand-brown: #8a6454;
     --brand-brown-dark: #4a342b;
@@ -382,6 +396,7 @@ html.lenis body {
 }
 
 .stat-small {
+    font-family: 'AnekMalayalamCondensed', sans-serif;
     font-size: 14px;
     font-weight: 500;
     opacity: 0.8;
@@ -389,6 +404,7 @@ html.lenis body {
 }
 
 .stat-large {
+    font-family: 'AnekMalayalamCondensedMedium', sans-serif;
     font-size: 20px;
     font-weight: 600;
     color: white;
@@ -1556,11 +1572,11 @@ html.lenis body {
     }
 
     .stat-small {
-        font-size: 18px;
+        font-size: 22px;
     }
 
     .stat-large {
-        font-size: 30px;
+        font-size: 36px;
     }
 
     .know-more-btn {
@@ -1662,7 +1678,7 @@ html.lenis body {
     }
 
     .main-heading {
-        font-size: 34px;
+        font-size: 38px;
         /* margin-bottom: 5px; */
         max-width: 100%;
     }
@@ -1681,11 +1697,11 @@ html.lenis body {
     }
 
     .stat-small {
-        font-size: 18px;
+        font-size: 22px;
     }
 
     .stat-large {
-        font-size: 30px;
+        font-size: 36px;
     }
 
     .bottom-right {
