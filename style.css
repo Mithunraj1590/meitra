@@ -378,6 +378,7 @@ html.lenis body {
     flex-direction: column;
     line-height: 1.1;
     width: auto;
+    position: relative;
 }
 
 .stat-small {
@@ -904,6 +905,11 @@ html.lenis body {
         min-width: auto;
         width: calc(100% - 30px);
     }
+
+    .stats-text {
+
+        left: -35px;
+    }
 }
 
 
@@ -1048,7 +1054,7 @@ html.lenis body {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    padding: 120px 40px 60px;
+    padding: 200px 40px 60px;
     transform: translateX(100%);
     transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     border-left: 1px solid rgba(255, 255, 255, 0.05);
@@ -1065,14 +1071,14 @@ html.lenis body {
 }
 
 .menu-list li {
-    margin-bottom: 12px;
+    margin-bottom: 17px;
     overflow: hidden;
 }
 
 .menu-list li a {
     color: #fff;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 400;
     display: block;
     transition: color 0.3s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
@@ -1541,6 +1547,7 @@ html.lenis body {
 
     .main-heading {
         font-size: 42px;
+        margin-bottom: 0;
     }
 
     .huge-number {
@@ -1656,7 +1663,7 @@ html.lenis body {
 
     .main-heading {
         font-size: 34px;
-        margin-bottom: 5px;
+        /* margin-bottom: 5px; */
         max-width: 100%;
     }
 
@@ -1665,6 +1672,7 @@ html.lenis body {
         align-items: flex-end;
         width: 100%;
         margin-top: 5px;
+        gap: 0;
     }
 
     .huge-number {
