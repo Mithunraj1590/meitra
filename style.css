@@ -1019,6 +1019,40 @@ html.lenis body {
     transform: translateY(-5px) rotate(-45deg);
 }
 
+/* --- Desktop Nav Links --- */
+.nav-links-desktop {
+    display: none;
+    margin-left: auto;
+    margin-right: 20px;
+}
+
+.nav-appointment-btn {
+    background: var(--brand-brown);
+    color: white;
+    padding: 10px 24px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    font-family: 'Oswald', sans-serif;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-appointment-btn:hover {
+    background: var(--brand-brown-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+@media (min-width: 1025px) {
+    .nav-links-desktop {
+        display: flex;
+    }
+}
+
 @media (max-width: 768px) {
     .nav-links-desktop {
         display: none;
