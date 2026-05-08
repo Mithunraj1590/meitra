@@ -740,7 +740,7 @@ html.lenis body {
         }
 
         .stat-large {
-            font-size: 52px;
+            font-size: 60px;
         }
     }
 
@@ -1735,11 +1735,16 @@ html.lenis body {
     }
 
     .stat-large {
-        font-size: 36px;
+        font-size: 47px;
+        line-height: .9;
     }
 
     .bottom-right {
         width: 100%;
+    }
+
+    .stats-row {
+        margin-top: -5px;
     }
 
     .know-more-btn {
