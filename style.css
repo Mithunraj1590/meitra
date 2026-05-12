@@ -1487,6 +1487,12 @@ html.lenis body {
 }
 
 /* --- Excellence Swiper Section --- */
+.free-scroll-zone {
+    scroll-snap-align: start;
+    position: relative;
+    background-color: #0f0f0f;
+}
+
 .swiper-section {
     background: #0f0f0f;
     padding: 100px 0;
