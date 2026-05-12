@@ -1,12 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize Lenis Smooth Scroll
     console.log('Initializing Lenis v1.1.20...');
+    /*
     const lenis = new Lenis({
         lerp: 0.1,
         wheelMultiplier: 1,
         gestureOrientation: 'vertical',
         normalizeWheel: true,
-        smoothTouch: true
+        smoothTouch: false
     });
 
     // Synchronize Lenis with GSAP ScrollTrigger
@@ -17,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     gsap.ticker.lagSmoothing(0);
+    */
 
     // Setup Flip Clocks
     function setupFlipClocks() {
@@ -99,6 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
     slides.forEach((slide, i) => {
         ScrollTrigger.create({
             trigger: slide,
+            scroller: ".reel-wrapper", // Use the new scroll container
             start: "top center",
             once: true, // Run animation only once per page session
             onEnter: () => {
@@ -110,18 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-    // Snapping logic refined for Lenis
-    ScrollTrigger.create({
-        trigger: ".reel-wrapper",
-        start: "top top",
-        end: "bottom bottom",
-        snap: {
-            snapTo: 1 / (slides.length - 1),
-            duration: { min: 0.1, max: 0.3 },
-            delay: 0,
-            ease: "power1.inOut"
-        }
-    });
+    // Snapping logic removed in favor of native CSS scroll snapping for Instagram Reels effect
 
 
     ScrollTrigger.refresh();
@@ -159,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         sheet.classList.add('active');
         // Stop Lenis scroll
-        lenis.stop();
+        // lenis.stop();
         // Prevent scrolling while reading
         document.body.style.overflow = 'hidden';
     };
@@ -168,7 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeSheet = () => {
         sheet.classList.remove('active');
         // Restart Lenis scroll
-        lenis.start();
+        // lenis.start();
         // Re-enable scrolling
         document.body.style.overflow = 'auto';
     };
@@ -187,9 +179,9 @@ document.addEventListener('DOMContentLoaded', () => {
         fullscreenMenu.classList.toggle('active');
         
         if (isActive) {
-            lenis.stop();
+            // lenis.stop();
         } else {
-            lenis.start();
+            // lenis.start();
         }
     };
 
@@ -200,7 +192,7 @@ document.addEventListener('DOMContentLoaded', () => {
         link.addEventListener('click', () => {
             menuToggle.classList.remove('active');
             fullscreenMenu.classList.remove('active');
-            lenis.start();
+            // lenis.start();
         });
     });
 

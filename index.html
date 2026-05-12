@@ -59,6 +59,7 @@
                 <li><a href="#" style="--i:5">International Patients</a></li>
                 <li><a href="#" style="--i:6">Careers</a></li>
                 <li><a href="#" style="--i:7">Contact Us</a></li>
+                <li><a href="booking.html" class="nav-appointment-btn" style="--i:8; display: inline-block; margin-top: 15px;">Book an Appointment</a></li>
             </ul>
             <div class="menu-footer">
                 <p>Emergency: +91 495 712 3456</p>
@@ -73,7 +74,7 @@
     </div>
 
     <!-- Main Container for GSAP Scroll -->
-    <div class="reel-container" id="reel-container">
+    <div class="reel-container" id="reel-container" data-lenis-prevent="true">
         <div class="reel-wrapper">
             <!-- Slide 1 (Neuro Sciences) -->
             <div class="reel-slide">
@@ -467,7 +468,6 @@
                 </div>
             </div>
         </div>
-    </div>
 
     <!-- Excellence in Care Section (Swiper) -->
     <section class="swiper-section">
@@ -548,6 +548,17 @@
             <!-- Navigation buttons moved outside swiper container -->
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
+        </div>
+    </section>
+
+    <!-- Healing Journey CTA Section (Mobile Only) -->
+    <section class="journey-cta-section mobile-only-cta">
+        <h2 class="journey-heading">READY TO START YOUR<br>HEALING JOURNEY?</h2>
+        <p class="journey-subtext">Consult with our world-class specialists and get<br>the care you deserve.</p>
+        
+        <div class="journey-buttons">
+            <a href="booking.html" class="journey-btn-primary">BOOK AN APPOINTMENT</a>
+            <a href="#" class="journey-btn-secondary">CONTACT SUPPORT</a>
         </div>
     </section>
 
@@ -646,7 +657,7 @@
             </div>
         </div>
     </footer>
-
+    </div>
 
     <!-- Bottom Sheet / Article View -->
     <div class="bottom-sheet" id="article-sheet">
