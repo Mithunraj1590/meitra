@@ -1342,6 +1342,11 @@ html.lenis body {
     line-height: 1.5;
 }
 
+.footer-contact .contact-item span.phone-number {
+    color: #eed199 !important;
+    font-weight: 600;
+}
+
 .footer-contact .contact-item a {
     color: rgba(255, 255, 255, 0.6) !important;
     text-decoration: none;
@@ -1836,8 +1841,8 @@ html.lenis body {
 
 .fab-container {
     position: fixed;
-    bottom: 24px;
-    right: 24px;
+    bottom: 125px;
+    right: 20px;
     z-index: 1000;
     display: flex;
     flex-direction: column;
