@@ -26,16 +26,16 @@
     box-sizing: border-box;
 }
 
-html,
+html {
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+}
+
 body {
     width: 100%;
-    height: auto !important;
-    min-height: 100%;
     margin: 0;
     padding: 0;
     overflow-x: hidden;
-    overflow-y: auto !important;
-    overscroll-behavior: auto; /* Allow scroll chaining from reel-wrapper */
     background-color: #111;
     font-family: 'Anek Malayalam', sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -76,16 +76,8 @@ html.lenis body {
 }
 
 .reel-wrapper {
-    width: 100vw;
-    height: 100vh;
-    overflow-y: scroll;
-    scroll-snap-type: y mandatory;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    touch-action: pan-y;
-}
-.reel-wrapper::-webkit-scrollbar {
-    display: none;
+    width: 100%;
+    position: relative;
 }
 
 .reel-slide {
@@ -1125,7 +1117,7 @@ html.lenis body {
     right: 0;
     width: 400px;
     max-width: 85%;
-    height: 100%;
+    height: 100vh;
     background: #0a0a0a;
     z-index: 1;
     display: flex;
@@ -1173,33 +1165,7 @@ html.lenis body {
     color: #eed199;
 }
 
-.menu-footer {
-    margin-top: auto;
-    opacity: 0;
-    transition: opacity 0.6s ease 0.4s;
-}
 
-.fullscreen-menu.active .menu-footer {
-    opacity: 1;
-}
-
-.menu-footer p {
-    color: rgba(255, 255, 255, 0.5);
-    font-size: 14px;
-    margin-bottom: 20px;
-}
-
-.menu-socials {
-    display: flex;
-    gap: 20px;
-}
-
-.menu-socials a {
-    color: #eed199;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 13px;
-}
 
 
 
@@ -1247,84 +1213,6 @@ html.lenis body {
     font-weight: 500;
 }
 
-/* --- Healing Journey CTA Section --- */
-.journey-cta-section {
-    background-color: #fcfbf9;
-    background-image: radial-gradient(rgba(0, 0, 0, 0.08) 1px, transparent 1px);
-    background-size: 20px 20px;
-    padding: 60px 24px;
-    text-align: center;
-    border-top: 1px solid rgba(0,0,0,0.05);
-    position: relative;
-    z-index: 5;
-}
-
-.journey-heading {
-    font-family: 'Oswald', sans-serif;
-    font-size: 32px;
-    font-weight: 700;
-    color: var(--brand-brown-dark);
-    line-height: 1.2;
-    margin-bottom: 16px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.journey-subtext {
-    font-size: 15px;
-    color: #444;
-    margin-bottom: 32px;
-    line-height: 1.5;
-}
-
-.journey-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    max-width: 320px;
-    margin: 0 auto;
-}
-
-.journey-btn-primary {
-    display: block;
-    width: 100%;
-    background-color: var(--brand-brown-dark);
-    color: white;
-    padding: 16px;
-    border-radius: 8px;
-    font-family: 'Oswald', sans-serif;
-    font-weight: 700;
-    font-size: 16px;
-    text-decoration: none;
-    text-transform: uppercase;
-    transition: background 0.2s ease, transform 0.2s ease;
-}
-
-.journey-btn-primary:hover {
-    background-color: #3a261f;
-    transform: translateY(-2px);
-}
-
-.journey-btn-secondary {
-    display: block;
-    width: 100%;
-    background-color: transparent;
-    color: var(--brand-brown-dark);
-    border: 2px solid var(--brand-brown-dark);
-    padding: 14px; /* Slightly less padding to account for border */
-    border-radius: 8px;
-    font-family: 'Oswald', sans-serif;
-    font-weight: 700;
-    font-size: 16px;
-    text-decoration: none;
-    text-transform: uppercase;
-    transition: background 0.2s ease, transform 0.2s ease;
-}
-
-.journey-btn-secondary:hover {
-    background-color: rgba(74, 52, 43, 0.05);
-    transform: translateY(-2px);
-}
 
 /* --- Professional Site Footer --- */
 .site-footer {
@@ -1449,9 +1337,14 @@ html.lenis body {
 }
 
 .footer-contact .contact-item span {
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.6) !important;
     font-size: 15px;
     line-height: 1.5;
+}
+
+.footer-contact .contact-item a {
+    color: rgba(255, 255, 255, 0.6) !important;
+    text-decoration: none;
 }
 
 .footer-bottom {
@@ -1932,4 +1825,94 @@ html.lenis body {
         min-width: 110px;
         font-size: 14px;
     }
+}
+
+/* --- Floating Action Button (Mobile) --- */
+@media (min-width: 769px) {
+    .fab-container {
+        display: none !important;
+    }
+}
+
+.fab-container {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.fab-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 16px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fab-container.active .fab-actions {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.fab-action-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #fff;
+    color: var(--brand-brown-dark);
+    padding: 10px 16px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s ease;
+}
+
+.fab-action-btn:active {
+    transform: scale(0.95);
+}
+
+.whatsapp-btn {
+    color: #25D366;
+}
+
+.fab-toggle-btn {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--brand-brown);
+    color: #fff;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background 0.2s;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.fab-toggle-btn:active {
+    transform: scale(0.9);
+}
+
+.fab-container.active .fab-toggle-btn {
+    background: #333;
+    transform: rotate(90deg);
+}
+
+.fab-container.active .fab-icon-open {
+    display: none;
+}
+
+.fab-container.active .fab-icon-close {
+    display: block !important;
 }

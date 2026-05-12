@@ -101,7 +101,6 @@ document.addEventListener('DOMContentLoaded', () => {
     slides.forEach((slide, i) => {
         ScrollTrigger.create({
             trigger: slide,
-            scroller: ".reel-wrapper", // Use the new scroll container
             start: "top center",
             once: true, // Run animation only once per page session
             onEnter: () => {
@@ -262,5 +261,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     ScrollTrigger.refresh();
+
+    // Floating Action Button Toggle
+    const fabMenu = document.getElementById('fab-menu');
+    const fabToggle = document.getElementById('fab-toggle');
+    if (fabToggle && fabMenu) {
+        fabToggle.addEventListener('click', () => {
+            fabMenu.classList.toggle('active');
+        });
+    }
 });
 
